@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import json #импортирование модуля для работы с json файлами
+import json
 
-keyMenu = { #клавиатура с главным меню
+keyMenu = {
     "one_time": False,
     "buttons": [
         [{
@@ -11,13 +11,13 @@ keyMenu = { #клавиатура с главным меню
                 },
                 "color": "primary"
             }],
-            [{
+        [{
                 "action": {
                     "type": "text",
                     "label": "📋Изменения в расписании"
                 },
                 "color": "positive"
-            }],
+        }],
         [{
             "action": {
                     "type": "text",
@@ -45,82 +45,19 @@ keyMenu = { #клавиатура с главным меню
                     "label": "🏫О школе",
                 },
                 "color": "secondary"
-        },
-        {
-            "action": {
-                    "type": "text",
-                    "label": "⚙Настройки",
-                },
-                "color": "secondary"
         }]
 
     ]
 }
 
 
-keyMenuPRO = { #клавиатура с главным меню(PRO)
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "label": "☁"
-                },
-                "color": "primary"
-            },{
-                "action": {
-                    "type": "text",
-                    "label": "📋"
-                },
-                "color": "primary"
-            },
-        {
-            "action": {
-                    "type": "text",
-                    "label": "📌"
-                },
-                "color": "primary"
-        }],
-        [{
-            "action": {
-                    "type": "open_link",
-                    "link": "https://vk.com/app5748831_-186189504",
-                    "label": "📰"
-                }
-        }],
-        [{
-            "action": {
-                    "type": "text",
-                    "label": "⚠"
-                },
-                "color": "positive"
-        },
-        {
-            "action": {
-                    "type": "text",
-                    "label": "🏫",
-                },
-                "color": "positive"
-        },
-        {
-            "action": {
-                    "type": "text",
-                    "label": "⚙",
-                },
-                "color": "positive"
-        }]
-
-    ]
-}
-
-
-keyStart = { #клавиатура при первом переходе к диалогу группы
+keyStart = {
     "one_time": True,
     "buttons": [
         [{
                 "action": {
                     "type": "text",
-                    "payload": {"command":"start"} ,
+                    "payload": {"command": "start"},
                     "label": "Начать"
                 },
                 "color": "primary"
@@ -129,7 +66,7 @@ keyStart = { #клавиатура при первом переходе к ди�
 }
 
 
-keyTimers = { #клавиатура которая отсылается пользователю при команде "важные даты"
+keyTimers = {  # клавиатура которая отсылается пользователю при команде "важные даты"
     "one_time": False,
     "buttons": [
         [{
@@ -157,36 +94,8 @@ keyTimers = { #клавиатура которая отсылается поль
     ]
 }
 
-keyTimersPRO = { #клавиатура которая отсылается пользователю при команде "📌"(PRO)
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "label": "☀"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "label": "⏰"
-                },
-                "color": "positive"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "label": "Назад"
-                },
-                "color": "secondary"
-            }]
-            
-    ]
-}
 
-
-keyShedule = { #клавиатура для выбора дня
+keyShedule = {  # клавиатура для выбора дня
     "inline": True,
     "buttons": [
         [{
@@ -207,7 +116,7 @@ keyShedule = { #клавиатура для выбора дня
 }
 
 
-keySpecial = { #клавиатура которая отсылается пользователю при команде "⚠Особое"
+keySpecial = {  # клавиатура которая отсылается пользователю при команде "⚠Особое"
     "one_time": False,
     "buttons": [
         [{
@@ -216,13 +125,6 @@ keySpecial = { #клавиатура которая отсылается пол�
                     "label": "🦠Коронавирус"
                 },
                 "color": "negative"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "label": "🃏Карточки"
-                },
-                "color": "primary"
             }],
             [{
                 "action": {
@@ -248,122 +150,20 @@ keySpecial = { #клавиатура которая отсылается пол�
     ]
 }
 
-keySpecialPRO = { #клавиатура которая отсылается пользователю при команде "⚠"(PRO)
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "label": "🦠"
-                },
-                "color": "negative"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "label": "🃏"
-                },
-                "color": "positive"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "label": "🎲"
-                },
-                "color": "positive"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "label": "Назад"
-                },
-                "color": "secondary"
-            }]
-    ]
-}
 
-
-keySchool_website ={ #клавиатура для перехода на сайт школы
+keySchool_website ={  # клавиатура для перехода на сайт школы
     "inline": True,
     "buttons": [
         [{
                 "action": {
                     "type": "open_link",
                     "link": "https://sevgym14.ru",
-                    "label": "&#127760;На сайт" #знак интернета
+                    "label": "&#127760;На сайт"  # знак интернета
                 }  
             }]
     ]
 }
 
-
-keySchool_websitePRO ={ #клавиатура для перехода на сайт школы
-    "inline": True,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "open_link",
-                    "link": "https://sevgym14.ru",
-                    "label": "&#127760;" #знак интернета
-                }  
-            }]
-    ]
-}
-
-
-keyCustomization = { #клавиатура которая отсылается пользователю при команде "⚙Настройки"
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "label": "🗿Standart"
-                },
-                "color": "positive"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "label": "👑PRO"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "label": "Назад"
-                },
-                "color": "secondary"
-            }]
-    ]
-}
-
-keyCustomizationPRO = { #клавиатура которая отсылается пользователю при команде "⚙"
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "label": "🗿"
-                },
-                "color": "positive"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "label": "👑"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "label": "Назад"
-                },
-                "color": "secondary"
-            }]
-    ]
-}
 
 keySettings = { #клавиатура которая отсылается пользователю при команде "⚙Настройки"
     "one_time": False,
@@ -392,383 +192,22 @@ keySettings = { #клавиатура которая отсылается пол
     ]
 }
 
-keySettingsPRO = { #клавиатура которая отсылается пользователю при команде "⚙Настройки"
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "label": "⌨"
-                },
-                "color": "positive"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "label": "🌤"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "label": "Назад"
-                },
-                "color": "secondary"
-            }]
-    ]
-}
 
-keyWeatherForUser= { #клавиатура которая отсылается пользователю при команде "⚙Настройки"
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "label": "✅Подписаться"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "label": "❌Отписаться"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "label": "Назад"
-                },
-                "color": "secondary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "label": "Коротко о рассылке погоды"
-                },
-                "color": "positive"
-            }],
-    ]
-}
-
-keyWeatherForUserPRO = { #клавиатура которая отсылается пользователю при команде "⚙Настройки"
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "label": "✅"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "label": "❌"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "label": "Назад"
-                },
-                "color": "secondary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "label": "Коротко о рассылке погоды"
-                },
-                "color": "positive"
-            }],
-    ]
-}
-
-
-keyCards = { #клавиатура для проверки себя
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Проверить себя"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Добавить карточку"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Назад"
-                },
-                "color": "secondary"
-            },
-            {
-            
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Коротко о карточках"
-                },
-                "color": "positive"
-            }]
-            
-    ]
-}
-
-check_Cards = { #клавиатура которая отправляется пользователю после команды "проверка знаний"
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "тАнглийский"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "тБиология"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "тАлгебра"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "тИстория"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "тЛитература"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"2\"}",
-                    "label": "тМузыка"
-                },
-                "color": "primary"
-            },{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "тФизкультура"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "тФранцузский"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "тФизика"
-                },
-                "color": "primary"
-            },{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "тОбществознание"
-                },
-                "color": "primary"
-            },{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "тРусский"
-                },
-                "color": "primary"
-            },{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "тХимия"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Следующая карточка"
-                },
-                "color": "positive"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Назад"
-                },
-                "color": "secondary"
-            }
-        ]
-
-    ]
-}
-
-
-record_Cards = { #клавиатура которая отправляется пользователю после команды "Добавить карточку"
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Английский"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Биология"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Алгебра"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "История"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Литература"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"2\"}",
-                    "label": "Музыка"
-                },
-                "color": "primary"
-            },{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Физкультура"
-                },
-                "color": "primary"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Французский"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Физика"
-                },
-                "color": "primary"
-            },{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Обществознание"
-                },
-                "color": "primary"
-            },{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Русский"
-                },
-                "color": "primary"
-            },{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Химия"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Назад"
-                },
-                "color": "secondary"
-            }
-        ]
-
-    ]
-}
-
-
-keySchoolnews ={ #клавиатура для перехода на сайт школы
+keySchoolnews ={  # клавиатура для перехода на сайт школы
     "inline": True,
     "buttons": [
         [{
                 "action": {
                     "type": "open_link",
                     "link": "https://vk.com/app5748831_-186189504",
-                    "label": "Подписаться" #знак интернета
+                    "label": "Подписаться"  # знак интернета
                 }  
             }]
     ]
 }
 
 
-delete_a_card_and_farther = { #клавиатура для удаления карточки
+delete_a_card_and_farther = {  # клавиатура для удаления карточки
     "inline": True,
     "buttons": [
         [{
@@ -792,7 +231,7 @@ delete_a_card_and_farther = { #клавиатура для удаления ка
 }
 
 
-keyGames = { #клавиатура которая отсылается пользователю при команде "⚠Особое"
+keyGames = {  # клавиатура которая отсылается пользователю при команде "⚠Особое"
     "one_time": False,
     "buttons": [
         [{
@@ -826,7 +265,8 @@ keyGames = { #клавиатура которая отсылается поль�
     ]
 }
 
-keyKamen_Noznica_Bumaga = { #клавиатура которая отсылается пользователю при команде "⚠Особое"
+
+keyKamen_Noznica_Bumaga = {
     "one_time": False,
     "buttons": [
         [{
@@ -860,7 +300,7 @@ keyKamen_Noznica_Bumaga = { #клавиатура которая отсылае�
     ]
 }
 
-keyGadalka = { #клавиатура которая отсылается пользователю при команде "⚠Особое"
+keyGadalka = {
     "one_time": False,
     "buttons": [
         [{
@@ -880,7 +320,7 @@ keyGadalka = { #клавиатура которая отсылается пол�
     ]
 }
 
-keyDoor = { #клавиатура которая отсылается пользователю при команде "⚠Особое"
+keyDoor = {
     "one_time": False,
     "buttons": [
         [{
@@ -949,7 +389,7 @@ keyDoor = { #клавиатура которая отсылается польз
     ]
 }
 
-#раскодировка клавиатур для дайнейшего использования
+# раскодировка клавиатур для дайнейшего использования
 
 keyMenu = json.dumps(keyMenu, ensure_ascii=False).encode('utf-8')
 keyMenu = str(keyMenu.decode('utf-8'))
@@ -969,44 +409,8 @@ keySpecial = str(keySpecial.decode('utf-8'))
 keySchool_website = json.dumps(keySchool_website, ensure_ascii=False).encode('utf-8')
 keySchool_website = str(keySchool_website.decode('utf-8'))
 
-keyCustomization = json.dumps(keyCustomization, ensure_ascii=False).encode('utf-8')
-keyCustomization = str(keyCustomization.decode('utf-8'))
-
-keyMenuPRO = json.dumps(keyMenuPRO, ensure_ascii=False).encode('utf-8')
-keyMenuPRO = str(keyMenuPRO.decode('utf-8'))
-
-keyTimersPRO = json.dumps(keyTimersPRO, ensure_ascii=False).encode('utf-8')
-keyTimersPRO = str(keyTimersPRO.decode('utf-8'))
-
-keySpecialPRO = json.dumps(keySpecialPRO, ensure_ascii=False).encode('utf-8')
-keySpecialPRO = str(keySpecialPRO.decode('utf-8'))
-
-keySchool_websitePRO = json.dumps(keySchool_websitePRO, ensure_ascii=False).encode('utf-8')
-keySchool_websitePRO = str(keySchool_websitePRO.decode('utf-8'))
-
-keyCustomizationPRO = json.dumps(keyCustomizationPRO, ensure_ascii=False).encode('utf-8')
-keyCustomizationPRO = str(keyCustomizationPRO.decode('utf-8'))
-
 keySettings = json.dumps(keySettings, ensure_ascii=False).encode('utf-8')
 keySettings = str(keySettings.decode('utf-8'))
-
-keySettingsPRO = json.dumps(keySettingsPRO, ensure_ascii=False).encode('utf-8')
-keySettingsPRO = str(keySettingsPRO.decode('utf-8'))
-
-keyWeatherForUserPRO = json.dumps(keyWeatherForUserPRO, ensure_ascii=False).encode('utf-8')
-keyWeatherForUserPRO = str(keyWeatherForUserPRO.decode('utf-8'))
-
-keyWeatherForUser = json.dumps(keyWeatherForUser, ensure_ascii=False).encode('utf-8')
-keyWeatherForUser = str(keyWeatherForUser.decode('utf-8'))
-
-keyCards = json.dumps(keyCards, ensure_ascii=False).encode('utf-8')
-keyCards = str(keyCards.decode('utf-8'))
-
-check_Cards = json.dumps(check_Cards, ensure_ascii=False).encode('utf-8')
-check_Cards = str(check_Cards.decode('utf-8'))
-
-record_Cards = json.dumps(record_Cards, ensure_ascii=False).encode('utf-8')
-record_Cards = str(record_Cards.decode('utf-8'))
 
 delete_a_card_and_farther = json.dumps(delete_a_card_and_farther, ensure_ascii=False).encode('utf-8')
 delete_a_card_and_farther = str(delete_a_card_and_farther.decode('utf-8'))
