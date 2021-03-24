@@ -1,1 +1,1 @@
-gdfgfg
+print(1)
