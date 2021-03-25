@@ -3,8 +3,6 @@
 import sys
 import sqlite3
 
-from base_lessons_folder import base_lessons
-
 sys.path.insert(1, '/base_lessons_folder')
 
 
@@ -30,7 +28,6 @@ def checking_for_a_user(user_id, vkapi):  # проверка на наличие
     cur.execute("SELECT user_id FROM id"+ str(user_id) + " WHERE user_id = '%s'" % user_id)
     result = cur.fetchone()
 
-    base_lessons.base_lesson_user(user_id)
 
     # заполнение информации о пользователе,если он толко что зарегестрировался
     if result is None:
@@ -57,7 +54,7 @@ def L_message_and_LL_message(user_id, L_message):  # запись в табли�
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
 
-    LLL_message = geting_LL_message(user_id) # получение позопозопрошлого сообщени
+    LLL_message = geting_LL_message(user_id)  # получение позопозопрошлого сообщени
     LL_message = geting_L_message(user_id)  # получение позопрошлого сообщения
 
     # обновление значений прошлого и позопрошлого сообщения

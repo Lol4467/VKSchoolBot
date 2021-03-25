@@ -300,6 +300,7 @@ keyKamen_Noznica_Bumaga = {
     ]
 }
 
+
 keyGadalka = {
     "one_time": False,
     "buttons": [
@@ -319,6 +320,7 @@ keyGadalka = {
             }]
     ]
 }
+
 
 keyDoor = {
     "one_time": False,
@@ -388,6 +390,7 @@ keyDoor = {
             }]
     ]
 }
+
 
 # раскодировка клавиатур для дайнейшего использования
 
