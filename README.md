@@ -30,7 +30,7 @@
 
 6. может предоставлять статистику по короновирусу
 
-![image](https://user-images.githubusercontent.com/81264432/112484695-38eda100-8d8b-11eb-8830-b0c94c0b65f0.png)
+![image](https://user-images.githubusercontent.com/81264432/112485676-3f304d00-8d8c-11eb-9357-705f4139ba0c.png)
 
 7. есть шуточкая возможность, узнать стоит ли учить
 
