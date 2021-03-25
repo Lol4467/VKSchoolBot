@@ -26,6 +26,8 @@
 
 5. может предоставить информацию о школе
 
+![image](https://user-images.githubusercontent.com/81264432/112485459-055f4680-8d8c-11eb-9e7b-061929056200.png)
+
 6. может предоставлять статистику по короновирусу
 
 ![image](https://user-images.githubusercontent.com/81264432/112484695-38eda100-8d8b-11eb-8830-b0c94c0b65f0.png)
@@ -34,6 +36,6 @@
 
 ![image](https://user-images.githubusercontent.com/81264432/112484929-705c4d80-8d8b-11eb-8e0b-fbc21bd39602.png)
 
-
 8. есть пару мини игр (Обычные "Камень Ножницы Бумага", "Гадалка", "Двери")
 
+![image](https://user-images.githubusercontent.com/81264432/112485371-ebbdff00-8d8b-11eb-8ac7-6dc581df0f4e.png)
