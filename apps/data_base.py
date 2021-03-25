@@ -269,18 +269,18 @@ def main_loop(user_id, message, vkapi):
     checking_for_a_user(user_id, vkapi)
     
     # получение последнего сообщения пользователя
-    L_message = geting_L_message(user_id)
+    #L_message = geting_L_message(user_id)
     
     # получение позапрошлого сообщения
-    LL_message = geting_LL_message(user_id)
+    #LL_message = geting_LL_message(user_id)
 
     # получение позапозапрошлого сообщения
-    LLL_message = geting_LLL_message(user_id)
+    #LLL_message = geting_LLL_message(user_id)
 
     # запись последих сообщений 
-    L_message_and_LL_message(user_id, message)
+    #L_message_and_LL_message(user_id, message)
 
     cur.close()
     con.close()
 
-    return L_message, LL_message, LLL_message
+    #return L_message, LL_message, LLL_message

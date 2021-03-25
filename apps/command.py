@@ -47,7 +47,7 @@ def message_weather(vk_session, user_id):  # 'Погода'
 
     data_base.now_Keyboard(user_id, keyboard="keyMenu")
     private_send_message(vk_session, user_id, "Температура: " + temp + "\n" + cloudiness + "\n" + "Скорость ветра: "
-                         + wind_speed + "м/с", None, keyboards.keyMenu)
+                         + wind_speed + " м/с", None, keyboards.keyMenu)
 
 
 def message_important_date(vk_session, user_id):  # 'Важные даты'

@@ -33,7 +33,7 @@ def the_countdown_till_summer():  # сколько осталось до лет�
         remained_summer = summer - now
         days = remained_summer.days
 
-    summer_ans = ('До летних каникул осталось: {} дн. {} ч. {} мин. {} сек.⏳'.format(days, hh, mm, ss))
+    summer_ans = ('☀До летних каникул осталось:\n{} дн. {} ч. {} мин⏳'.format(days, hh, mm))
     
     if summer <= datetime.datetime(year, month, day) <= summer_end:
         end_summer = datetime.datetime(year, config.end_summer_holidays_month, config.end_summer_holidays_day) - now
@@ -41,8 +41,8 @@ def the_countdown_till_summer():  # сколько осталось до лет�
         mm, ss = divmod(end_summer.seconds, 60)
         hh, mm = divmod(mm, 60)
 
-        summer_ans = ('Сейчас летние каникулы☀ \n\nДо их конца осталось: \n{} дн. {} ч. {} мин. {} сек.⏳'.
-                      format(end_summer.days, hh, mm, ss))
+        summer_ans = ('☀Сейчас летние каникулы☀ \n\nДо их конца осталось: \n{} дн. {} ч. {} мин⏳'.
+                      format(end_summer.days, hh, mm))
 
         return summer_ans
     else:
@@ -64,7 +64,7 @@ def before_the_holidays_computing():  # считаеться сколько ос
     winter_holidays = datetime.datetime(year, config.beginning_winter_holidays_month,
                                         config.beginning_winter_holidays_day)
 
-    # корекктируются значения ,если год пересек значение начала каникул,то есть добавляется год
+    # корекктируются значения ,если год пересек значение начала каникул,то добавляется год
     if month > config.beginning_summer_holidays_month: 
         year = year + 1
         summer_holidays = datetime.datetime(year, config.beginning_summer_holidays_month,
@@ -95,7 +95,7 @@ def before_the_holidays_computing():  # считаеться сколько ос
     return remained_until_summer, remained_until_autumn, remained_until_spring, remained_until_winter
 
 
-def before_the_holidays_text():  # полученых значения конвертируются в текст
+def before_the_holidays_text():  # полученые значения конвертируются в текст
 
     remained_until_summer, remained_until_autumn, remained_until_spring, remained_until_winter \
         = before_the_holidays_computing()
@@ -105,21 +105,17 @@ def before_the_holidays_text():  # полученых значения конв�
 
         mm, ss = divmod(remained_until_summer.seconds, 60)
         hh, mm = divmod(mm, 60)
-
-        remained_until_summer_text = ('До летних каникул осталось: {} дн. {} ч. {} мин. {} сек.⏳'.
-                                      format(remained_until_summer.days, hh, mm, ss))
-
+        remained_until_summer_text = ('☀До летних каникул осталось: {} дн. {} ч. {} мин⏳'.
+                                      format(remained_until_summer.days, hh, mm))
         return remained_until_summer_text
-        
+
     if remained_until_autumn < remained_until_summer and remained_until_autumn < remained_until_spring \
             and remained_until_autumn < remained_until_winter:
 
         mm, ss = divmod(remained_until_autumn.seconds, 60)
         hh, mm = divmod(mm, 60)
-
-        remained_until_autumn_text = ('До осенних каникул осталось: {} дн. {} ч. {} мин. {} сек.⏳'.
-                                      format(remained_until_autumn.days, hh, mm, ss))
-
+        remained_until_autumn_text = ('🍂До осенних каникул осталось: {} дн. {} ч. {} мин⏳'.
+                                      format(remained_until_autumn.days, hh, mm))
         return remained_until_autumn_text
 
     if remained_until_spring < remained_until_autumn and remained_until_spring < remained_until_summer \
@@ -127,9 +123,8 @@ def before_the_holidays_text():  # полученых значения конв�
 
         mm, ss = divmod(remained_until_spring.seconds, 60)
         hh, mm = divmod(mm, 60)
-
-        remained_until_spring_text = ('До весенних каникул осталось: {} дн. {} ч. {} мин. {} сек.⏳'.
-                                      format(remained_until_spring.days, hh, mm, ss))
+        remained_until_spring_text = ('🍃До весенних каникул осталось: {} дн. {} ч. {} мин⏳'.
+                                      format(remained_until_spring.days, hh, mm))
 
         return remained_until_spring_text
 
@@ -139,8 +134,8 @@ def before_the_holidays_text():  # полученых значения конв�
         mm, ss = divmod(remained_until_winter.seconds, 60)
         hh, mm = divmod(mm, 60)
 
-        remained_until_winter_text = ('До зимних каникул осталось: {} дн. {} ч. {} мин. {} сек.⏳'.
-                                      format(remained_until_winter.days, hh, mm, ss))
+        remained_until_winter_text = ('❄До зимних каникул осталось: {} дн. {} ч. {} мин⏳'.
+                                      format(remained_until_winter.days, hh, mm))
 
         return remained_until_winter_text
 
@@ -193,8 +188,8 @@ def until_the_end_o_the_holidays(holidays):  # сколько осталось �
         mm, ss = divmod(end_summer.seconds, 60)
         hh, mm = divmod(mm, 60)
 
-        end_holidays_text = ('Сейчас летние каникулы☀ \n\nДо их конца осталось: \n{} дн. {} ч. {} мин. {} сек.⏳'.
-                             format(end_summer.days, hh, mm, ss))
+        end_holidays_text = ('Сейчас летние каникулы☀ \n\nДо их конца осталось: \n{} дн. {} ч. {} мин⏳'.
+                             format(end_summer.days, hh, mm))
 
         return end_holidays_text
     
@@ -204,8 +199,8 @@ def until_the_end_o_the_holidays(holidays):  # сколько осталось �
         mm, ss = divmod(end_spring.seconds, 60)
         hh, mm = divmod(mm, 60)
 
-        end_holidays_text = ('Сейчас весенние каникулы🍃 \n\nДо их конца осталось:\n{} дн. {} ч. {} мин. {} сек.⏳'.
-                             format(end_spring.days, hh, mm, ss))
+        end_holidays_text = ('Сейчас весенние каникулы🍃 \n\nДо их конца осталось:\n{} дн. {} ч. {} мин⏳'.
+                             format(end_spring.days, hh, mm))
 
         return end_holidays_text
 
@@ -215,8 +210,8 @@ def until_the_end_o_the_holidays(holidays):  # сколько осталось �
         mm, ss = divmod(end_autumn.seconds, 60)
         hh, mm = divmod(mm, 60)
 
-        end_holidays_text = ('Сейчас осение каникулы🍂 \n\nДо их конца осталось:\n{} дн. {} ч. {} мин. {} сек.⏳'.
-                             format(end_autumn.days, hh, mm, ss))
+        end_holidays_text = ('Сейчас осение каникулы🍂 \n\nДо их конца осталось:\n{} дн. {} ч. {} мин⏳'.
+                             format(end_autumn.days, hh, mm))
         return end_holidays_text
 
     elif holidays == "winter":
@@ -225,7 +220,7 @@ def until_the_end_o_the_holidays(holidays):  # сколько осталось �
         mm, ss = divmod(end_winter.seconds, 60)
         hh, mm = divmod(mm, 60)
 
-        end_holidays_text = ('Сейчас зимние каникулы❄ \n\nДо их конца осталось:\n{} дн. {} ч. {} мин. {} сек.⏳'.
-                             format(end_winter.days, hh, mm, ss))
+        end_holidays_text = ('Сейчас зимние каникулы❄ \n\nДо их конца осталось:\n{} дн. {} ч. {} мин⏳'.
+                             format(end_winter.days, hh, mm))
 
         return end_holidays_text

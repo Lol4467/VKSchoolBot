@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+
 from apps import command
 from apps import data_base
 from apps import data_door
@@ -10,18 +11,18 @@ from apps import door
 sys.path.insert(0, '/apps')
 
 
-def private_message(vk_session, user_id, msg, vk_api, vkapi, L_message, LL_message, LLL_message):
+def private_message(vk_session, user_id, msg, vk_api, vkapi):
     available_command = data_base.check_available_command(user_id)
 
     if msg == "назад":
         command.back(vk_session, user_id, available_command)
 
+    elif msg == "начать" or msg == "start":
+        command.start(vk_session, user_id, vkapi)
+
     elif available_command == "avaible_standart":
 
-        if msg == "начать" or msg == "start":
-            command.start(vk_session, user_id, vkapi)
-
-        elif msg == "на завтра" or msg == "на сегодня":
+        if msg == "на завтра" or msg == "на сегодня":
             command.message_shedule(vk_session, user_id, msg, vk_api)
 
         elif msg == "☁погода" or msg == "☁":
