@@ -38,5 +38,3 @@ def player_vs_comp_normal(msg):
         bot = "Бот выбрал бумагу!!!"
     
     return answer, bot
-
-

@@ -17,13 +17,6 @@ def start(vk_session, user_id, vkapi):  # "начать"
     private_send_message(vk_session, user_id, user_name + config.start_text, None, keyboards.keyMenu)
 
 
-def functional(vk_session, user_id):  # "функционал"
-    import config
-
-    data_base.now_Keyboard(user_id, keyboard="keyMenu")
-    private_send_message(vk_session, user_id, config.functional, None, keyboards.keyMenu)
-
-
 def message_shedule(vk_session, user_id, msg, vk_api):  # 'на завтра', 'на сегодня'
     from apps import shedule
     import config

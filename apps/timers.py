@@ -1,52 +1,52 @@
 # -*- coding: utf-8 -*-
 import sys
+import datetime
+import config
+
 sys.path.insert(1, '/apps')
 
-import datetime #импортирование модуля для работы со временем
-import config #импортирование настроек для бота (выбирается начало и конец основых каникул)
 
-
-def nowtime(): #получение настоящего времени
+def nowtime():
     now = datetime.datetime.now()
     year = now.year
     month = now.month
     day = now.day
+
     return now, year, month, day         
 
-def the_countdown_till_summer(): # сколько осталось до лета
+
+def the_countdown_till_summer():  # сколько осталось до лета
     now, year, month, day = nowtime()
-    summer = datetime.datetime(year,config.beginning_summer_holidays_month, config.beginning_summer_holidays_day)
-    summer_end = datetime.datetime(year,config.end_summer_holidays_month, config.end_summer_holidays_day)
+
+    summer = datetime.datetime(year, config.beginning_summer_holidays_month, config.beginning_summer_holidays_day)
+    summer_end = datetime.datetime(year, config.end_summer_holidays_month, config.end_summer_holidays_day)
+
     remained_summer = summer - now
     mm, ss = divmod(remained_summer.seconds, 60)
     hh, mm = divmod(mm, 60)
 
     days = remained_summer.days
 
-    check = (int(days))
-    
-    time = summer_end - summer
-    tod_days = 60
-    time_raz = (60 / int(time.days)) * 100
-    
-
-    if check < 0 or check == 0:
-
-        summer = datetime.datetime(year + 1,config.beginning_summer_holidays_month,config.beginning_summer_holidays_day)
+    if int(days) <= 0:
+        summer = datetime.datetime(year + 1, config.beginning_summer_holidays_month,
+                                   config.beginning_summer_holidays_day)
         remained_summer = summer - now
         days = remained_summer.days
-        
 
-    summer = ('До летних каникул осталось: {} дн. {} ч. {} мин. {} сек.⏳'.format(days, hh, mm, ss))
+    summer_ans = ('До летних каникул осталось: {} дн. {} ч. {} мин. {} сек.⏳'.format(days, hh, mm, ss))
     
-    if datetime.datetime(year,config.beginning_summer_holidays_month,config.beginning_summer_holidays_day) <= datetime.datetime(year,month,day) and datetime.datetime(year,month,day) <= datetime.datetime(year,config.end_summer_holidays_month,config.end_summer_holidays_day):
-        end_summer = datetime.datetime(year,config.end_summer_holidays_month,config.end_summer_holidays_day) - now
+    if summer <= datetime.datetime(year, month, day) <= summer_end:
+        end_summer = datetime.datetime(year, config.end_summer_holidays_month, config.end_summer_holidays_day) - now
+
         mm, ss = divmod(end_summer.seconds, 60)
         hh, mm = divmod(mm, 60)
-        summer = ('Сейчас летние каникулы☀ \n\nДо их конца осталось: \n{} дн. {} ч. {} мин. {} сек.⏳'.format(end_summer.days, hh, mm, ss))
-        return summer
+
+        summer_ans = ('Сейчас летние каникулы☀ \n\nДо их конца осталось: \n{} дн. {} ч. {} мин. {} сек.⏳'.
+                      format(end_summer.days, hh, mm, ss))
+
+        return summer_ans
     else:
-        return summer
+        return summer_ans
     
 
 

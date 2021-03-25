@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 import datetime
 import os
-import requests
-import imghdr
+import os.path
+import wget
+import urllib.request as urllib2
+
+from pdf2image import convert_from_path
 
 
 def get_schedule(tomorrow):
@@ -15,33 +18,35 @@ def get_schedule(tomorrow):
     
     # преобразований данных для создание ссылки
     if mounth == 1: 
-        mounth = ("January") 
+        mounth = "January"
     elif mounth == 2: 
-        mounth = ("February") 
+        mounth = "February"
     elif mounth == 3: 
-        mounth = ("March") 
+        mounth = "March"
     elif mounth == 4: 
-        mounth = ("April") 
+        mounth = "April"
     elif mounth == 5: 
-        mounth = ("May") 
+        mounth = "May"
     elif mounth == 6: 
-        mounth = ("June") 
+        mounth = "June"
     elif mounth == 7: 
-        mounth = ("July") 
+        mounth = "July"
     elif mounth == 8: 
-        mounth = ("August") 
+        mounth = "August"
     elif mounth == 9: 
-        mounth = ("September") 
+        mounth = "September"
     elif mounth == 10: 
-        mounth = ("October") 
+        mounth = "October"
     elif mounth == 11: 
-        mounth = ("November") 
+        mounth = "November"
     elif mounth == 12: 
-        mounth = ("December") 
+        mounth = "December"
     
     if now.month < 10:
         mounth0 = "0" + str(now.month)
-        
+    else:
+        mounth0 = str(now.month)
+
     if tomorrow:
         day = day + 1 
         if day < 10:
@@ -52,25 +57,30 @@ def get_schedule(tomorrow):
             day = "0" + str(day)
         day = str(day)
 
-    # составление ссылки
-    url = ("https://sevgym14.ru/" + mounth + "_" + str(year) + "/" + day + "_" + mounth0 + "_rasp.JPG")
+    # составление ссылки # поправить после каникул
+    url = ("https://sevgym14.ru/raspisanie_" + str(year - 1) + "_" + str(year) + "_" + str(now.month) + ".pdf")
 
-    r = requests.get(url)
-    if imghdr.what(None, h=r.content) == 'jpeg':  # проверка есть ли фотография с изменениями на сайте
-        p = requests.get(url) 
-        # закрузка изменений(в виде фото) в папку images
-        out = open("shedule/tomorrow/shedule.jpg" if tomorrow else "shedule/today/shedule.jpg", "wb") 
-        out.write(p.content) 
-        out.close()
+    try:
+        r = urllib2.urlopen(url)
+    except urllib2.URLError as e:
+        r = e
+    if r.code in (200, 401) and not \
+            os.path.exists("shedule/raspisanie_" + str(year - 1) + "_" + str(year) + "_" + str(now.month) + ".pdf"):
+
+        wget.download(url, "shedule")  # скачивание pdf
+
+        pages = convert_from_path("shedule/raspisanie_" + str(year - 1) + "_" + str(year) + "_" + str(now.month) + ".pdf", 500)
+        for page in pages:
+            page.save('shedule/out.jpg', 'JPEG')
 
 
-def check_tomorrow(vk_session,vk_api,tomorrow):  # проверка того,что выбрал пользователь
+def check_tomorrow(vk_session, vk_api, tomorrow):  # проверка того,что выбрал пользователь
     if tomorrow:
         day = "tomorrow"
     else:
         day = "today"
 
-    if os.path.exists(r'shedule/' + day + '/shedule.jpg'): #  проверка на наличие фотографии
+    if os.path.exists(r'shedule/' + day + '/shedule.jpg'):  # проверка на наличие фотографии
 
         # загрузка фото во ВК
         upload = vk_api.VkUpload(vk_session)

@@ -54,9 +54,6 @@ def private_message(vk_session, user_id, msg, vk_api, vkapi, L_message, LL_messa
         elif msg == "🎲учить/не учить" or msg == "🎲":
             command.teach_or_not(vk_session, user_id)
 
-        elif msg == "функционал":
-            command.functional(vk_session, user_id)
-
         elif msg == "🕹игры":
             command.keyGames(vk_session, user_id)
         
