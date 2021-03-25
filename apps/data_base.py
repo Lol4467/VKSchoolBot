@@ -18,25 +18,13 @@ def checking_for_a_user(user_id, vkapi):  # проверка на наличие
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
 
-    name_user = information_user(vkapi,user_id)
+    name_user = information_user(vkapi, user_id)
     
     # регестрация пользователя,если он раньше не регестрировался
-    cur.execute('CREATE TABLE IF NOT EXISTS id'+ str(user_id) + '(user_id TEXT,user_name TEXT, L_message TEXT, '
-                                                                'LL_message TEXT,LLL_message TEXT,last_command TEXT '
-                                                                ',last_lesson TEXT, keyboard TEXT,keyboard_type TEXT,'
-                                                                'available_command TEXT,sequence TEXT,answer TEXT'
-                                                                ',question TEXT ,max_English TEXT,max_physics TEXT'
-                                                                ',max_biology TEXT,max_history TEXT,max_literature TEXT'
-                                                                ',max_music TEXT,max_French TEXT,'
-                                                                'max_social_studies TEXT,max_Russian TEXT,'
-                                                                'max_physical_education TEXT,max_chemistry TEXT,'
-                                                                'max_algebra TEXT,masive_English TEXT,'
-                                                                'masive_physics TEXT,masive_biology TEXT,'
-                                                                'masive_history TEXT,masive_literature TEXT,'
-                                                                'masive_music TEXT,masive_French TEXT,'
-                                                                'masive_social_studies TEXT,masive_Russian TEXT,'
-                                                                'masive_physical_education TEXT,masive_chemistry TEXT,'
-                                                                'masive_algebra TEXT)')
+    cur.execute('CREATE TABLE IF NOT EXISTS id' + str(user_id) + '(user_id TEXT, user_name TEXT, L_message TEXT, '
+                                                                 'LL_message TEXT, LLL_message TEXT '
+                                                                 ', keyboard TEXT, keyboard_type TEXT,'
+                                                                 'available_command TEXT)')
     
     # проверка на наличие информации о пользователе в таблице
     cur.execute("SELECT user_id FROM id"+ str(user_id) + " WHERE user_id = '%s'" % user_id)
@@ -46,13 +34,8 @@ def checking_for_a_user(user_id, vkapi):  # проверка на наличие
 
     # заполнение информации о пользователе,если он толко что зарегестрировался
     if result is None:
-        cur.execute("INSERT INTO id" + str(user_id) + " VALUES('%s', '%s', '%s','%s','%s','%s','%s','%s','%s','%s',"
-                                                      "'%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s'"
-                                                      ",'%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s',"
-                                                      "'%s','%s')"
-                    % (user_id, name_user, None, None, None, None, None, None, "standart", "avaible_standart", None,
-                       None, None, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, None, None, None, None, None, None,
-                       None, None, None, None, None, None))
+        cur.execute("INSERT INTO id" + str(user_id) + " VALUES('%s', '%s', '%s','%s','%s','%s','%s','%s','%s')"
+                    % (user_id, name_user, None, None, None, None, None, "standart", "avaible_standart"))
 
         con.commit()
 
@@ -89,11 +72,11 @@ def L_message_and_LL_message(user_id, L_message):  # запись в табли�
     con.close()
     
 
-def geting_L_message(user_id): # получение последнего сообщеия
+def geting_L_message(user_id):  # получение последнего сообщеия
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
 
-    cur.execute("SELECT L_message FROM id"+str(user_id)+" WHERE user_id = %d" % user_id)
+    cur.execute("SELECT L_message FROM id" + str(user_id)+" WHERE user_id = %d" % user_id)
     result = cur.fetchone()
     
     if result is None:
@@ -110,7 +93,7 @@ def geting_LL_message(user_id):  # получение позапрошлого �
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
 
-    cur.execute("SELECT LL_message FROM id"+str(user_id)+" WHERE user_id = %d" % user_id)
+    cur.execute("SELECT LL_message FROM id" + str(user_id) + " WHERE user_id = %d" % user_id)
     result = cur.fetchone()
 
     if result is None:
@@ -127,7 +110,7 @@ def geting_LLL_message(user_id):  # получение позапозапрош�
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
 
-    cur.execute("SELECT LLL_message FROM id"+str(user_id)+" WHERE user_id = %d" % user_id)
+    cur.execute("SELECT LLL_message FROM id" + str(user_id) + " WHERE user_id = %d" % user_id)
     result = cur.fetchone()
 
     if result is None:
@@ -135,15 +118,16 @@ def geting_LLL_message(user_id):  # получение позапозапрош�
         return result
     else:
         return result[0]
+
     cur.close()
     con.close()
 
 
-def now_Keyboard(user_id,keyboard):  # запись в БД клаыитатуры которая сейчас у пользователя
+def now_Keyboard(user_id, keyboard):  # запись в БД клаыитатуры которая сейчас у пользователя
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
 
-    cur.execute("UPDATE id"+str(user_id)+" SET keyboard='%s' WHERE user_id ='%s'" % (keyboard, user_id))
+    cur.execute("UPDATE id" + str(user_id) + " SET keyboard='%s' WHERE user_id ='%s'" % (keyboard, user_id))
     con.commit()
 
     cur.close()
@@ -155,56 +139,56 @@ def Back(user_id):  # "Назад"
     cur = con.cursor()
 
     # получение клавиатуры, которая находиться сейчас у пользователя
-    cur.execute("SELECT keyboard FROM id"+ str(user_id) + " WHERE user_id = '%s'" % user_id)
+    cur.execute("SELECT keyboard FROM id" + str(user_id) + " WHERE user_id = '%s'" % user_id)
     result = cur.fetchone()
     result = result[0]
 
     # какая клавиатура будет если сделать шаг назад
-    if result == None:
+    if not result:
         keyboard = "Не доступно"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "keyTimers":
         keyboard = "keyMenu"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "keyMenu":
         keyboard = "Не доступно"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "keySpecial":
         keyboard = "keyMenu"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "keySettings":
         keyboard = "keyMenu"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "keyCustomization":
         keyboard = "keySettings"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "keyWeatherForUser":
         keyboard = "keySettings"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "keyGames":
         keyboard = "keySpecial"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "keyKamen_Noznica_Bumaga":
         keyboard = "keyGames"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "keyGadalka":
         keyboard = "keyGames"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "keyDoor":
         keyboard = "keyGames"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "keyCards":
         keyboard = "keySpecial"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "check_Cards":
         keyboard = "keyCards"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "record_Cards":
         keyboard = "keyCards"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     elif result == "Не доступно":
         keyboard = "keyMenu"
-        now_Keyboard(user_id,keyboard)
+        now_Keyboard(user_id, keyboard)
     else:
         keyboard = "Не доступно"
 
@@ -219,7 +203,7 @@ def check_key(user_id):
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
     
-    cur.execute("SELECT keyboard_type FROM id"+ str(user_id) + " WHERE user_id = '%s'" % user_id)
+    cur.execute("SELECT keyboard_type FROM id" + str(user_id) + " WHERE user_id = '%s'" % user_id)
     result = cur.fetchone()
     result = result[0]
     
@@ -233,7 +217,7 @@ def record_available_command(user_id, available_command):
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
 
-    cur.execute("UPDATE id" + str(user_id)+" SET available_command='%s' WHERE user_id ='%s'" %
+    cur.execute("UPDATE id" + str(user_id) + " SET available_command='%s' WHERE user_id ='%s'" %
                 (available_command, user_id))
 
     con.commit()
@@ -260,7 +244,7 @@ def record_last_command(user_id, last_command):
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
     
-    cur.execute("UPDATE id"+str(user_id)+" SET last_command='%s' WHERE user_id ='%s'" % (last_command, user_id))
+    cur.execute("UPDATE id"+str(user_id) + " SET last_command='%s' WHERE user_id ='%s'" % (last_command, user_id))
     con.commit()
 
     cur.close()
@@ -271,7 +255,7 @@ def getting_last_command(user_id):
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
     
-    cur.execute("SELECT last_command FROM id"+str(user_id)+" WHERE user_id='%s'" % user_id)
+    cur.execute("SELECT last_command FROM id" + str(user_id)+" WHERE user_id='%s'" % user_id)
     answer = cur.fetchone()
 
     cur.close()
@@ -280,7 +264,7 @@ def getting_last_command(user_id):
 
 
 # основной цикл(выполняеться каждый раз,когда пользователь присылает сообщение)
-def main_loop(user_id , message, vkapi):
+def main_loop(user_id, message, vkapi):
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
     
