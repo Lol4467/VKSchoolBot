@@ -151,7 +151,7 @@ keySpecial = {  # клавиатура которая отсылается по�
 }
 
 
-keySchool_website ={  # клавиатура для перехода на сайт школы
+keySchool_website = {  # клавиатура для перехода на сайт школы
     "inline": True,
     "buttons": [
         [{
@@ -165,35 +165,7 @@ keySchool_website ={  # клавиатура для перехода на сай
 }
 
 
-keySettings = { #клавиатура которая отсылается пользователю при команде "⚙Настройки"
-    "one_time": False,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "label": "⌨Вид клавиатуры"
-                },
-                "color": "positive"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "label": "🌤Рассылка погоды"
-                },
-                "color": "primary"
-            }],
-            [{
-                "action": {
-                    "type": "text",
-                    "label": "Назад"
-                },
-                "color": "secondary"
-            }]
-    ]
-}
-
-
-keySchoolnews ={  # клавиатура для перехода на сайт школы
+keySchoolnews = {  # клавиатура для перехода на сайт школы
     "inline": True,
     "buttons": [
         [{
@@ -203,30 +175,6 @@ keySchoolnews ={  # клавиатура для перехода на сайт �
                     "label": "Подписаться"  # знак интернета
                 }  
             }]
-    ]
-}
-
-
-delete_a_card_and_farther = {  # клавиатура для удаления карточки
-    "inline": True,
-    "buttons": [
-        [{
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Удалить карточку"
-                },
-                "color": "negative"
-            },
-            {
-                "action": {
-                    "type": "text",
-                    "payload": "{\"button\": \"1\"}",
-                    "label": "Следующая карточка"
-                },
-                "color": "primary"
-            }
-            ]
     ]
 }
 
@@ -411,12 +359,6 @@ keySpecial = str(keySpecial.decode('utf-8'))
 
 keySchool_website = json.dumps(keySchool_website, ensure_ascii=False).encode('utf-8')
 keySchool_website = str(keySchool_website.decode('utf-8'))
-
-keySettings = json.dumps(keySettings, ensure_ascii=False).encode('utf-8')
-keySettings = str(keySettings.decode('utf-8'))
-
-delete_a_card_and_farther = json.dumps(delete_a_card_and_farther, ensure_ascii=False).encode('utf-8')
-delete_a_card_and_farther = str(delete_a_card_and_farther.decode('utf-8'))
 
 keySchoolnews = json.dumps(keySchoolnews, ensure_ascii=False).encode('utf-8')
 keySchoolnews = str(keySchoolnews.decode('utf-8'))

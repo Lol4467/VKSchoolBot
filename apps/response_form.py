@@ -25,34 +25,34 @@ def private_message(vk_session, user_id, msg, vk_api, vkapi):
         if msg == "на завтра" or msg == "на сегодня":
             command.message_shedule(vk_session, user_id, msg, vk_api)
 
-        elif msg == "☁погода" or msg == "☁":
+        elif msg == "☁погода":
             command.message_weather(vk_session, user_id)
         
-        elif msg == "📌важные даты" or msg == "📌":
+        elif msg == "📌важные даты":
             command.message_important_date(vk_session, user_id)
 
-        elif msg == "⏰таймер до ближайших каникул" or msg == "⏰":
+        elif msg == "⏰таймер до ближайших каникул":
             command.timer_until_the_next_vacation(vk_session, user_id)
 
-        elif msg == "☀таймер до летних каникул" or msg == "☀":
+        elif msg == "☀таймер до летних каникул":
             command.the_countdown_till_summer_vacation(vk_session, user_id)
 
-        elif msg == "📰новости школы" or msg == "📰":
+        elif msg == "📰новости школы":
             command.notifications(vk_session, user_id)
 
-        elif msg == "📋изменения в расписании" or msg == "📋":
+        elif msg == "📋изменения в расписании":
             command.keyShedule(vk_session, user_id)
 
-        elif msg == "⚠особое" or msg == "⚠":
+        elif msg == "⚠особое":
             command.special(vk_session, user_id)
 
-        elif msg == "🏫о школе" or msg == "🏫":
+        elif msg == "🏫о школе":
             command.information_about_the_school(vk_session, user_id, vk_api)
 
-        elif msg == "🦠коронавирус" or msg == "🦠":
+        elif msg == "🦠коронавирус":
             command.coronovirus(vk_session, user_id)
 
-        elif msg == "🎲учить/не учить" or msg == "🎲":
+        elif msg == "🎲учить/не учить":
             command.teach_or_not(vk_session, user_id)
 
         elif msg == "🕹игры":
