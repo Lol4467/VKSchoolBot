@@ -205,7 +205,7 @@ def until_the_end_o_the_holidays(holidays):  # сколько осталось �
         return end_holidays_text
 
     elif holidays == "autumn":
-        end_autumn = datetime.datetime(year,config.end_autumn_holidays_month, config.end_autumn_holidays_day) - now
+        end_autumn = datetime.datetime(year, config.end_autumn_holidays_month, config.end_autumn_holidays_day) - now
 
         mm, ss = divmod(end_autumn.seconds, 60)
         hh, mm = divmod(mm, 60)
