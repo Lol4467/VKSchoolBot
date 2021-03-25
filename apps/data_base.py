@@ -34,8 +34,8 @@ def checking_for_a_user(user_id, vkapi):  # проверка на наличие
 
     # заполнение информации о пользователе,если он толко что зарегестрировался
     if result is None:
-        cur.execute("INSERT INTO id" + str(user_id) + " VALUES('%s', '%s', '%s','%s','%s','%s','%s','%s','%s')"
-                    % (user_id, name_user, None, None, None, None, None, "standart", "avaible_standart"))
+        cur.execute("INSERT INTO id" + str(user_id) + " VALUES('%s', '%s', '%s', '%s','%s','%s','%s','%s')"
+                    % (user_id, name_user, None, None, None, None, "standart", "avaible_standart"))
 
         con.commit()
 
