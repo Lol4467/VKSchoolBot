@@ -1,6 +1,14 @@
-# VKSchoolBot
+<h1 align="center">Добро пожаловать в проект VKSchoolBot 👋</h1>
 
-Пример простого бота для ВКонтакте на Python 3. Обработка событий с использованием Bots Long Poll API. Так же используется SQLite.
+<p>
+  <a href="#" target="_blank">
+    <img alt="License: SharKKProd" src="https://img.shields.io/badge/License-Lol4467-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/Sharkker_live" target="_blank">
+  </a>
+</p>
+
+> Пример простого бота для ВКонтакте на Python 3. Обработка событий с использованием Bots Long Poll API. Так же используется SQLite.
 
 Создатель бота: 
 
