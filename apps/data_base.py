@@ -36,18 +36,8 @@ def checking_for_a_user(user_id, vkapi):  # проверка на наличие
 
         con.commit()
 
-        user_txt(user_id)
-
     cur.close()
     con.close()
-
-
-def user_txt(user_id):
-    f = open('base_user_txt/user.txt', 'a')
-    try:
-        f.writelines("id" + str(user_id) + "\n")
-    finally:
-        f.close()
 
 
 def L_message_and_LL_message(user_id, L_message):  # запись в таблицу прошлого и позопрошлого сообщения
@@ -261,7 +251,7 @@ def getting_last_command(user_id):
 
 
 # основной цикл(выполняеться каждый раз,когда пользователь присылает сообщение)
-def main_loop(user_id, message, vkapi):
+def main_loop(user_id, vkapi):
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
     
