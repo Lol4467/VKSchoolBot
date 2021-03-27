@@ -19,7 +19,7 @@ for event in longpoll.listen():  # проверка на наличие собы
     if event.type == VkBotEventType.MESSAGE_NEW and event.from_user:
 
         L_message = data_base.main_loop(event.obj.from_id, vkapi, event.obj.text.lower())
-        private_message(vk_session, event.obj.from_id, event.obj.text.lower(), vk_api, vkapi, L_message)
+        private_message(vk_session, event.obj.from_id, event.obj.text, vk_api, vkapi, L_message)
             
     elif event.type == VkBotEventType.GROUP_JOIN:
         private_send_message(vk_session, event.obj.user_id, config.welcome_text, None, None)

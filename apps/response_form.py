@@ -14,11 +14,13 @@ sys.path.insert(0, '/apps')
 def private_message(vk_session, user_id, msg, vk_api, vkapi, L_message):
     available_command = data_base.check_available_command(user_id)
     role = data_base.check_role(user_id)
+    msg_save = msg
+    msg = msg.lower()
 
-    if msg == "назад":
+    if msg == "Назад":
         command.back(vk_session, user_id, available_command)
 
-    elif msg == "начать" or msg == "start":
+    elif msg == "Начать" or msg == "Start":
         command.start(vk_session, user_id, vkapi)
 
     elif available_command == "avaible_standart":
@@ -80,7 +82,7 @@ def private_message(vk_session, user_id, msg, vk_api, vkapi, L_message):
                 command.urgent_message_part1(vk_session, user_id)
 
             elif L_message == "срочное сообщение":
-                command.urgent_message_part2(vk_session, msg)
+                command.urgent_message_part2(vk_session, msg_save)
 
 
     elif available_command == "Kamen_Noznica_Bumaga":
