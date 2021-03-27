@@ -11,8 +11,9 @@ from apps import door
 sys.path.insert(0, '/apps')
 
 
-def private_message(vk_session, user_id, msg, vk_api, vkapi):
+def private_message(vk_session, user_id, msg, vk_api, vkapi, L_message):
     available_command = data_base.check_available_command(user_id)
+    role = data_base.check_role(user_id)
 
     if msg == "назад":
         command.back(vk_session, user_id, available_command)
@@ -72,6 +73,15 @@ def private_message(vk_session, user_id, msg, vk_api, vkapi):
 
             if NEW_GAME:
                 command.doorstart(vk_session, user_id)
+
+        elif role == "admin":
+            print(L_message)
+            if msg == "срочное сообщение":
+                command.urgent_message_part1(vk_session, user_id)
+
+            elif L_message == "срочное сообщение":
+                command.urgent_message_part2(vk_session, msg)
+
 
     elif available_command == "Kamen_Noznica_Bumaga":
         if msg == 'камень' or msg == "ножницы" or msg == "бумага":

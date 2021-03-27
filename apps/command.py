@@ -241,3 +241,23 @@ def teach_or_not(vk_session, user_id):  # "🎲Учить/Не учить"
         teach = "Учи давай🙃\nУдачи🍀"
 
     private_send_message(vk_session, user_id, teach, None, None)
+
+
+def urgent_message_part1(vk_session, user_id):
+    private_send_message(vk_session, user_id, "Введите срочное сообщение", None, None)
+
+
+def urgent_message_part2(vk_session, msg):
+    import re
+    f = open('base_user.txt', 'r')
+
+    try:
+        users = f.readlines()
+        red = re.compile('[id\n]')
+
+        for user in users:
+            user_id = red.sub('', user)
+            private_send_message(vk_session, user_id, msg, None, None)
+
+    finally:
+        f.close()

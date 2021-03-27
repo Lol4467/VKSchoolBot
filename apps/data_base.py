@@ -3,8 +3,6 @@
 import sys
 import sqlite3
 
-sys.path.insert(1, '/base_lessons_folder')
-
 
 def information_user(vkapi, user_id):  # получение имени пользователя
     user = vkapi.users.get(user_id=user_id)
@@ -17,24 +15,36 @@ def checking_for_a_user(user_id, vkapi):  # проверка на наличие
     cur = con.cursor()
 
     name_user = information_user(vkapi, user_id)
-    
+
     # регестрация пользователя,если он раньше не регестрировался
     cur.execute('CREATE TABLE IF NOT EXISTS id' + str(user_id) + '(user_id TEXT, user_name TEXT, L_message TEXT, '
                                                                  'LL_message TEXT, LLL_message TEXT '
                                                                  ', keyboard TEXT, keyboard_type TEXT,'
-                                                                 'available_command TEXT)')
+                                                                 'available_command TEXT, role TEXT)')
     
     # проверка на наличие информации о пользователе в таблице
     cur.execute("SELECT user_id FROM id"+ str(user_id) + " WHERE user_id = '%s'" % user_id)
     result = cur.fetchone()
 
-
     # заполнение информации о пользователе,если он толко что зарегестрировался
     if result is None:
-        cur.execute("INSERT INTO id" + str(user_id) + " VALUES('%s', '%s', '%s', '%s','%s','%s','%s','%s')"
-                    % (user_id, name_user, None, None, None, None, "standart", "avaible_standart"))
+        admins = [
+            295917974
+        ]
+        role = "user"
+        if user_id in admins:
+            role = "admin"
 
+        cur.execute("INSERT INTO id" + str(user_id) + " VALUES('%s', '%s', '%s', '%s','%s','%s','%s','%s','%s')"
+                    % (user_id, name_user, None, None, None, None, "standart", "avaible_standart", role))
         con.commit()
+
+        # запись пользователя в БД (txt)
+        f = open('base_user.txt', 'a')
+        try:
+            f.writelines("id" + str(user_id) + "\n")
+        finally:
+            f.close()
 
     cur.close()
     con.close()
@@ -227,6 +237,20 @@ def check_available_command(user_id):
     return result
 
 
+# проверка переменной котороя говорит боту ,какие команды может выполнить пользователь
+def check_role(user_id):
+    con = sqlite3.connect('./base_USER.db')
+    cur = con.cursor()
+
+    cur.execute("SELECT role FROM id" + str(user_id) + " WHERE user_id = '%s'" % user_id)
+    result = cur.fetchone()
+    result = result[0]
+
+    cur.close()
+    con.close()
+    return result
+
+
 def record_last_command(user_id, last_command):
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
@@ -251,7 +275,7 @@ def getting_last_command(user_id):
 
 
 # основной цикл(выполняеться каждый раз,когда пользователь присылает сообщение)
-def main_loop(user_id, vkapi):
+def main_loop(user_id, vkapi, message):
     con = sqlite3.connect('./base_USER.db')
     cur = con.cursor()
     
@@ -259,7 +283,7 @@ def main_loop(user_id, vkapi):
     checking_for_a_user(user_id, vkapi)
     
     # получение последнего сообщения пользователя
-    #L_message = geting_L_message(user_id)
+    L_message = geting_L_message(user_id)
     
     # получение позапрошлого сообщения
     #LL_message = geting_LL_message(user_id)
@@ -268,9 +292,9 @@ def main_loop(user_id, vkapi):
     #LLL_message = geting_LLL_message(user_id)
 
     # запись последих сообщений 
-    #L_message_and_LL_message(user_id, message)
+    L_message_and_LL_message(user_id, message)
 
     cur.close()
     con.close()
 
-    #return L_message, LL_message, LLL_message
+    return L_message
