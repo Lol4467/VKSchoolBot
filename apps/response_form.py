@@ -17,10 +17,10 @@ def private_message(vk_session, user_id, msg, vk_api, vkapi, L_message):
     msg_save = msg
     msg = msg.lower()
 
-    if msg == "Назад":
+    if msg == "назад":
         command.back(vk_session, user_id, available_command)
 
-    elif msg == "Начать" or msg == "Start":
+    elif msg == "начать" or msg == "start":
         command.start(vk_session, user_id, vkapi)
 
     elif available_command == "avaible_standart":
@@ -77,11 +77,14 @@ def private_message(vk_session, user_id, msg, vk_api, vkapi, L_message):
                 command.doorstart(vk_session, user_id)
 
         elif role == "admin":
-            print(L_message)
-            if msg == "срочное сообщение":
+
+            if msg == "админ-панель":
+                command.keyAdmin(vk_session, user_id, available_command)
+
+            elif msg == "срочное сообщение (текст)":
                 command.urgent_message_part1(vk_session, user_id)
 
-            elif L_message == "срочное сообщение":
+            elif L_message == "срочное сообщение (текст)":
                 command.urgent_message_part2(vk_session, msg_save)
 
 

@@ -153,12 +153,6 @@ def Back(user_id):  # "Назад"
     elif result == "keySpecial":
         keyboard = "keyMenu"
         now_Keyboard(user_id, keyboard)
-    elif result == "keySettings":
-        keyboard = "keyMenu"
-        now_Keyboard(user_id, keyboard)
-    elif result == "keyCustomization":
-        keyboard = "keySettings"
-        now_Keyboard(user_id, keyboard)
     elif result == "keyWeatherForUser":
         keyboard = "keySettings"
         now_Keyboard(user_id, keyboard)
@@ -174,14 +168,8 @@ def Back(user_id):  # "Назад"
     elif result == "keyDoor":
         keyboard = "keyGames"
         now_Keyboard(user_id, keyboard)
-    elif result == "keyCards":
+    elif result == "keyAdmin":
         keyboard = "keySpecial"
-        now_Keyboard(user_id, keyboard)
-    elif result == "check_Cards":
-        keyboard = "keyCards"
-        now_Keyboard(user_id, keyboard)
-    elif result == "record_Cards":
-        keyboard = "keyCards"
         now_Keyboard(user_id, keyboard)
     elif result == "Не доступно":
         keyboard = "keyMenu"

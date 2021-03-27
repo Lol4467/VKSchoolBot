@@ -261,3 +261,9 @@ def urgent_message_part2(vk_session, msg):
 
     finally:
         f.close()
+
+
+def keyAdmin(vk_session, user_id, available_command):
+    data_base.record_available_command(user_id, available_command)
+    data_base.now_Keyboard(user_id, keyboard="keyAdmin")
+    private_send_message(vk_session, user_id, "Админ-панель", None, keyboards.keyAdmin)

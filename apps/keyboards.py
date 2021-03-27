@@ -94,6 +94,34 @@ keyTimers = {  # клавиатура которая отсылается пол
     ]
 }
 
+keyAdmin = {  # клавиатура которая отсылается пользователю при команде "Админ-панель"
+    "one_time": False,
+    "buttons": [
+        [{
+            "action": {
+                "type": "text",
+                "label": "Срочное сообщение (текст)"
+            },
+            "color": "primary"
+        }],
+        [{
+            "action": {
+                "type": "text",
+                "label": "Срочное сообщение (текст и изображение)"
+            },
+            "color": "positive"
+        }],
+        [{
+            "action": {
+                "type": "text",
+                "label": "Назад"
+            },
+            "color": "secondary"
+        }]
+
+    ]
+}
+
 
 keyShedule = {  # клавиатура для выбора дня
     "inline": True,
@@ -139,6 +167,13 @@ keySpecial = {  # клавиатура которая отсылается по�
                     "label": "🕹Игры"
                 },
                 "color": "primary"
+            }],
+            [{
+                "action": {
+                    "type": "text",
+                    "label": "Админ-панель"
+                },
+                "color": "secondary"
             }],
             [{
                 "action": {
@@ -374,3 +409,6 @@ keyGadalka = str(keyGadalka.decode('utf-8'))
 
 keyDoor = json.dumps(keyDoor, ensure_ascii=False).encode('utf-8')
 keyDoor = str(keyDoor.decode('utf-8'))
+
+keyAdmin = json.dumps(keyAdmin, ensure_ascii=False).encode('utf-8')
+keyAdmin = str(keyAdmin.decode('utf-8'))
