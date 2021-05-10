@@ -87,7 +87,6 @@ def private_message(vk_session, user_id, msg, vk_api, vkapi, L_message):
             elif L_message == "срочное сообщение (текст)":
                 command.urgent_message_part2(vk_session, msg_save)
 
-
     elif available_command == "Kamen_Noznica_Bumaga":
         if msg == 'камень' or msg == "ножницы" or msg == "бумага":
             answer, bot = player_vs_comp_normal(msg)
